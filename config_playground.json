@@ -1,15 +1,15 @@
 {
-    "command": "train",
+    "command": "test",
     "gpu": 0,
     "log_directory": "/home/nas/PycharmProjects/ivadomed-personal-scripts/log_to_delete",
     "model_name": "seg_sc_t1-t2-t2s-mt",
-    "debugging": true,
+    "debugging": false,
     "object_detection_params": {
         "object_detection_path": null,
         "safety_factor": [1.0, 1.0, 1.0]
     },
     "loader_parameters": {
-        "bids_path": ["/home/nas/Consulting/ivado-project/Datasets/data_example_spinegeneric/","/home/nas/Consulting/ivado-project/Datasets/data-multi-subject"],
+        "bids_path": "/home/nas/Consulting/ivado-project/Datasets/data_example_spinegeneric/",
         "subject_selection": {"n": [], "metadata": [], "value": []},
         "target_suffix": ["_seg-manual"],
         "roi_params": {
@@ -32,8 +32,8 @@
     "split_dataset": {
         "fname_split": null,
         "random_seed": 6,
-        "center_test": [],
-        "method": "per_patient",
+        "center_test": ["mpicbs"],
+        "method": "per_center",
         "balance": null,
         "train_fraction": 0.6,
         "test_fraction": 0.2
@@ -44,7 +44,7 @@
             "name": "DiceLoss"
         },
         "training_time": {
-            "num_epochs": 100,
+            "num_epochs": 2,
             "early_stopping_patience": 50,
             "early_stopping_epsilon": 0.001
         },
@@ -76,7 +76,7 @@
     "FiLMedUnet": {
         "applied": false,
         "metadata": "contrasts",
-        "film_layers": [0, 1, 0, 0, 0, 0, 0, 0, 0, 0]
+        "film_layers": [0, 1, 0, 0, 0, 0, 0, 0]
     },
     "Modified3DUNet": {
         "applied": false,
