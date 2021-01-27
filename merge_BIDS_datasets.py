@@ -14,7 +14,7 @@ import sys
 # 2. --ofolder: output folder
 
 # Example call:
-# python3 merge_participants_files.py --ifolders ~/first_Dataset/ ~/second_Dataset/ --ofolder ~/mergedDataset/
+# python3 merge_BIDS_datasets.py --ifolders ~/first_Dataset/ ~/second_Dataset/ --ofolder ~/mergedDataset/
 
 # Konstantinos Nasiotis 2020
 
@@ -120,21 +120,23 @@ def main_run(argv):
         json.dump({"BIDSVersion": "1.0.1", "Name": "SCT_testing"}, outfile, indent=4) # Confirm the version is correct
 
 
-    all_datasets = [datasetFolder1, datasetFolder2]
-    for datasetFolder in all_datasets:
-        subjectsFolders = glob.glob(os.path.join(datasetFolder, 'sub-*'))
-        derivativesFolder = glob.glob(os.path.join(datasetFolder, 'derivatives'))
+    copy_files_as_well = 0
 
-        if derivativesFolder != []:
-            subjectsFolders.append(derivativesFolder[0])
-            foldersToCopy = subjectsFolders
-        else:
-            foldersToCopy = subjectsFolders
-            print("No derivatives are present in this folder")
+    if copy_files_as_well:
+        all_datasets = [datasetFolder1, datasetFolder2]
+        for datasetFolder in all_datasets:
+            subjectsFolders = glob.glob(os.path.join(datasetFolder, 'sub-*'))
+            derivativesFolder = glob.glob(os.path.join(datasetFolder, 'derivatives'))
 
+            if derivativesFolder != []:
+                subjectsFolders.append(derivativesFolder[0])
+                foldersToCopy = subjectsFolders
+            else:
+                foldersToCopy = subjectsFolders
+                print("No derivatives are present in this folder")
 
-        for subFolder in foldersToCopy:
-            copy_tree(subFolder, os.path.join(output_folder, os.path.basename(os.path.normpath(subFolder))))
+            for subFolder in foldersToCopy:
+                copy_tree(subFolder, os.path.join(output_folder, os.path.basename(os.path.normpath(subFolder))))
 
 
 if __name__ == "__main__":

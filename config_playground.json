@@ -2,14 +2,14 @@
     "command": "train",
     "gpu": 0,
     "log_directory": "/home/nas/PycharmProjects/ivadomed-personal-scripts/log_to_delete",
-    "model_name": "seg_sc_t1-t2-t2s-mt",
-    "debugging": true,
+    "model_name": "my_model",
+    "debugging": false,
     "object_detection_params": {
         "object_detection_path": null,
         "safety_factor": [1.0, 1.0, 1.0]
     },
     "loader_parameters": {
-        "bids_path": ["/home/nas/Consulting/ivado-project/Datasets/data_example_spinegeneric/","/home/nas/Consulting/ivado-project/Datasets/data-multi-subject"],
+        "bids_path": "/home/nas/Consulting/ivado-project/Datasets/sct-testing-large",
         "subject_selection": {"n": [], "metadata": [], "value": []},
         "target_suffix": ["_seg-manual"],
         "roi_params": {
@@ -17,8 +17,8 @@
             "slice_filter_roi": null
         },
         "contrast_params": {
-            "training_validation": ["T1w", "T2w", "T2star"],
-            "testing": ["T1w", "T2w", "T2star"],
+            "training_validation": ["T1w"],
+            "testing": ["T1w"],
             "balance": {}
         },
         "slice_filter_params": {
@@ -44,7 +44,7 @@
             "name": "DiceLoss"
         },
         "training_time": {
-            "num_epochs": 100,
+            "num_epochs": 1,
             "early_stopping_patience": 50,
             "early_stopping_epsilon": 0.001
         },
@@ -76,7 +76,7 @@
     "FiLMedUnet": {
         "applied": false,
         "metadata": "contrasts",
-        "film_layers": [0, 1, 0, 0, 0, 0, 0, 0, 0, 0]
+        "film_layers": [0, 1, 0, 0, 0, 0, 0, 0]
     },
     "Modified3DUNet": {
         "applied": false,
