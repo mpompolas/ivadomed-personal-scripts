@@ -9,7 +9,7 @@ from bids_neuropoly import bids
 subjectsUsedFile = '/home/nas/Desktop/dataset-training-sct.pkl' # train_valid_test: 1 for training, 2 for validating, 3 for testing
 
 # Output file
-outputFile = '/home/nas/Desktop/split_datasets_converted.joblib'
+outputFile = '/home/nas/Consulting/ivado-project/Datasets/merged_SCTLARGE_MULTISUBJECT/split_datasets_converted.joblib'
 
 
 
@@ -22,7 +22,7 @@ subjectsUsedForTesting = dataUsedOnSct[dataUsedOnSct['train_valid_test'] == 3]['
 
 
 # Load the merged participants.tsv
-merged_folder = '/home/nas/Desktop/merging_playground/mergedDataset'
+merged_folder = '/home/nas/Consulting/ivado-project/Datasets/merged_SCTLARGE_MULTISUBJECT/'
 df_merged = bids.BIDS(merged_folder).participants.content
 
 # NOW SHUFFLE AVAILABLE SUBJECTS AND MAKE SURE THERE ARE NO SUBJECTS FROM THE SCT_TESTING IN THE TRAINING AND VALIDATION LISTS
